@@ -8,6 +8,11 @@ Created by using:
 
 ### Install
 
+- Create a stub npm project
+- Install the tool there
+- Use via `npx`. Or via `sudo npx`
+- Also make sure to have zx
+
 ```bash
 sudo npm i -g zx
 
@@ -15,7 +20,7 @@ mkdir tmp
 cd tmp
 npm init -y
 
-sudo npm i @aibulat/installer
+npm i @aibulat/installer
 ```
 
 ### Uninstall
