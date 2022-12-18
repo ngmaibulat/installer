@@ -1,7 +1,20 @@
 #!/usr/bin/env zx
 
 import fs from "node:fs";
-import { isRoot } from "./utils.mjs";
+
+function isRoot() {
+    if (typeof process.getuid != "function") {
+        return false;
+    }
+
+    const uid = process.getuid();
+
+    if (uid) {
+        return false;
+    }
+
+    return true;
+}
 
 const msg = "The script will deploy MySQL Server and set a random root password";
 
