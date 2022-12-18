@@ -9,7 +9,8 @@
     "i-ubuntu-vim": "dist/ubuntu-vim.mjs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test",
+    "build": "tsc; chmod +x dist/* ; git add . ;"
   },
   "repository": {
     "type": "git",

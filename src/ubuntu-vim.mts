@@ -1,6 +1,7 @@
 #!/usr/bin/env zx
 
 import fs from "node:fs";
+import { isRoot } from "./utils.mjs";
 
 const msg = `
 The script will install VIM and configure it
@@ -21,6 +22,13 @@ console.log("");
 console.log(chalk.yellowBright(msg));
 console.log(chalk.yellowBright(`Platform: ${os.platform}`));
 console.log("");
+
+const root = isRoot();
+
+if (!root) {
+    console.error(chalk.red("This program must be run as root!"));
+    process.exit(1);
+}
 
 await $`apt install -qq vim`;
 echo(``);
