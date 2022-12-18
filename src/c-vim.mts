@@ -31,4 +31,5 @@ echo(``);
 await $`sh ~/.vim_runtime/install_awesome_vimrc.sh`;
 echo(``);
 
-//set nu
+await $`echo "set nu" >> ~/.vim_runtime/my_configs.vim`;
+echo(``);

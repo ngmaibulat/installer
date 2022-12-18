@@ -10,7 +10,20 @@ Created by using:
 
 ```bash
 sudo npm i -g zx
-sudo npm i -g @aibulat/installer
+
+mkdir tmp
+cd tmp
+npm init -y
+
+sudo npm i @aibulat/installer
+```
+
+### Uninstall
+
+```bash
+# just remove the folder where you have run npm init previosly
+# for example:
+rm -rf tmp
 ```
 
 ### Use
@@ -19,5 +32,5 @@ On Ubuntu Linux:
 
 ```bash
 sudo i-ubuntu-mysql
-sudo i-ubuntu-vim
+c-vim
 ```
