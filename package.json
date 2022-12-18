@@ -6,11 +6,12 @@
   "type": "module",
   "bin": {
     "i-ubuntu-mysql": "dist/ubuntu-mysql.mjs",
-    "i-ubuntu-vim": "dist/ubuntu-vim.mjs"
+    "i-ubuntu-vim": "dist/ubuntu-vim.mjs",
+    "c-vim": "dist/c-vim.mjs"
   },
   "scripts": {
     "test": "node --test",
-    "build": "tsc; chmod +x dist/* ; git add . ;"
+    "build": "tsc; chmod +x dist/* ; git add . ; git status"
   },
   "repository": {
     "type": "git",
