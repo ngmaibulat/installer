@@ -1,4 +1,4 @@
-### Installer
+### Overview
 
 Package to perform various installation automations.
 Created by using:
@@ -31,6 +31,6 @@ rm -rf tmp
 On Ubuntu Linux:
 
 ```bash
-sudo i-ubuntu-mysql
-c-vim
+sudo npx i-ubuntu-mysql
+npx c-vim
 ```
