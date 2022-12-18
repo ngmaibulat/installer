@@ -19,4 +19,5 @@ On Ubuntu Linux:
 
 ```bash
 sudo i-ubuntu-mysql
+sudo i-ubuntu-vim
 ```

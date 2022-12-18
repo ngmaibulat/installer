@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "bin": {
-    "i-ubuntu-mysql": "dist/ubuntu-mysql.mjs"
+    "i-ubuntu-mysql": "dist/ubuntu-mysql.mjs",
+    "i-ubuntu-vim": "dist/ubuntu-vim.mjs"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
