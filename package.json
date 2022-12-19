@@ -1,6 +1,6 @@
 {
   "name": "@aibulat/installer",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Package to perform various installation automations",
   "main": "index.js",
   "type": "module",
