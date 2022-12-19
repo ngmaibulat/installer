@@ -38,4 +38,5 @@ On Ubuntu Linux:
 ```bash
 sudo npx i-ubuntu-mysql
 npx c-vim
+npx gen-pw
 ```
