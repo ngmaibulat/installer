@@ -1,5 +1,12 @@
 focus.md
 js
+src
+.editorconfig
+.gitignore
+.prettierrc.json
+build.sh
+tsconfig.json
+todo.md
 
 # Logs
 logs
@@ -83,7 +90,6 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/

@@ -7,11 +7,12 @@
   "bin": {
     "i-ubuntu-mysql": "dist/ubuntu-mysql.mjs",
     "i-ubuntu-vim": "dist/ubuntu-vim.mjs",
-    "c-vim": "dist/c-vim.mjs"
+    "c-vim": "dist/c-vim.mjs",
+    "gen-pw": "dist/gen-pw.mjs"
   },
   "scripts": {
     "test": "node --test",
-    "build": "tsc; chmod +x dist/* ; git add . ; git status"
+    "build": "bash build.sh"
   },
   "repository": {
     "type": "git",

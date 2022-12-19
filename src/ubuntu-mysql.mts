@@ -1,20 +1,7 @@
 #!/usr/bin/env zx
 
 import fs from "node:fs";
-
-function isRoot() {
-    if (typeof process.getuid != "function") {
-        return false;
-    }
-
-    const uid = process.getuid();
-
-    if (uid) {
-        return false;
-    }
-
-    return true;
-}
+import { isRoot, genPassword, genSql } from "./utils.mjs";
 
 const msg = "The script will deploy MySQL Server and set a random root password";
 
@@ -30,22 +17,8 @@ if (!root) {
     process.exit(1);
 }
 
-function genSql() {
-    const pass = "generated!";
-
-    const sql = `
-    select host, user from mysql.user;
-
-    drop database if exists test;
-    create database if not exists app;
-
-    ALTER USER root@localhost IDENTIFIED WITH caching_sha2_password BY '${pass}';
-    `;
-
-    const fstream = fs.writeFileSync("tmp.sql", sql);
-}
-
-genSql();
+const pass = genPassword(12);
+genSql(pass, "tmp.sql");
 
 await $`apt install -qq mysql-server`;
 echo(``);
@@ -59,7 +32,5 @@ echo(``);
 await $`cat tmp.sql | mysql`;
 echo(``);
 
-//generate password for root
-//create limited user for the app database
-//generate .env file for the web app
-//script for rotation of passwords
+echo(`mysql root@localhost password:`);
+echo(pass);

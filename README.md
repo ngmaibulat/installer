@@ -16,8 +16,8 @@ Created by using:
 ```bash
 sudo npm i -g zx
 
-mkdir tmp
-cd tmp
+mkdir tools
+cd tools
 npm init -y
 
 npm i @aibulat/installer
@@ -28,7 +28,7 @@ npm i @aibulat/installer
 ```bash
 # just remove the folder where you have run npm init previosly
 # for example:
-rm -rf tmp
+rm -rf tools
 ```
 
 ### Use

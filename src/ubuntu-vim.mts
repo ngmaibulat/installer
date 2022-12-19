@@ -1,18 +1,6 @@
 #!/usr/bin/env zx
 
-function isRoot() {
-    if (typeof process.getuid != "function") {
-        return false;
-    }
-
-    const uid = process.getuid();
-
-    if (uid) {
-        return false;
-    }
-
-    return true;
-}
+import { isRoot } from "./utils.mjs";
 
 const root = isRoot();
 
