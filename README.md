@@ -31,12 +31,26 @@ npm i @aibulat/installer
 rm -rf tools
 ```
 
-### Use
-
-On Ubuntu Linux:
+### Update
 
 ```bash
-sudo npx i-ubuntu-mysql
-npx c-vim
-npx gen-pw
+cd tools # navigate to folder you have created
+npm update
+cat package-lock.json
+```
+
+### Use
+
+- navigate to the folder with npm project, you have created
+- run commands via `npx` or `sudo npx`
+
+```bash
+npx c-vim     # configure vim, make it nicer
+npx gen-pw    # generate random password
+```
+
+On `Ubuntu Linux`, you can use mysql installer:
+
+```bash
+sudo npx i-ubuntu-mysql  #install mysql, set random password, show password
 ```

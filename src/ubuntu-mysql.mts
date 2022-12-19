@@ -32,5 +32,10 @@ echo(``);
 await $`cat tmp.sql | mysql`;
 echo(``);
 
-echo(`mysql root@localhost password:`);
-echo(pass);
+echo(chalk.greenBright(`mysql root@localhost password:`));
+echo(chalk.greenBright(pass));
+echo(``);
+
+echo(chalk.red(`See tmp.sql for the SQL commands run`));
+echo(chalk.red(`Delete it or move to a secure place, as it contains the password for root@localhost mysql user`));
+echo(``);
