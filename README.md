@@ -35,7 +35,9 @@ rm -rf tools
 
 ```bash
 cd tools # navigate to folder you have created
-npm update
+npm outdated
+npm info    @aibulat/installer
+npm install @aibulat/installer@latest
 cat package-lock.json
 ```
 
@@ -52,5 +54,9 @@ npx gen-pw    # generate random password
 On `Ubuntu Linux`, you can use mysql installer:
 
 ```bash
-sudo npx i-ubuntu-mysql  #install mysql, set random password, show password
+# install mysql, set random password, show password
+# create database appdb
+# create .env file with DB access params
+
+sudo npx i-ubuntu-mysql appdb
 ```
