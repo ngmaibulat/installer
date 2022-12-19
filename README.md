@@ -54,9 +54,12 @@ npx gen-pw    # generate random password
 On `Ubuntu Linux`, you can use mysql installer:
 
 ```bash
-# install mysql, set random password, show password
+# install mysql, set random root password
 # create database appdb
-# create .env file with DB access params
+# create users: appro, apprw
+# with read-only and read-write access to database
+# create 3 .env files with db access params:
+# root.env, appro.env, apprw.env
 
 sudo npx i-ubuntu-mysql appdb
 ```

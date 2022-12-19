@@ -26,15 +26,21 @@ export function genPassword(passwordLength: number) {
 
 export function genSql(rootPw: string, approPw: string, apprwPw: string, dbname: string, filename: string) {
     const sql = `
-    select host, user from mysql.user;
-
     drop database if exists test;
     create database if not exists ${dbname};
+
+    drop user if exists appro;
+    drop user if exists apprw;
 
     create user appro identified with caching_sha2_password by '${approPw}';
     create user apprw identified with caching_sha2_password by '${apprwPw}';
 
+    GRANT SELECT ON ${dbname}.* TO appro@'%';
+    GRANT ALL PRIVILEGES ON ${dbname}.* TO apprw@'%';
+
     alter user root@localhost IDENTIFIED WITH caching_sha2_password BY '${rootPw}';
+
+    select host, user from mysql.user;
     `;
 
     const fstream = fs.writeFileSync(filename, sql);
