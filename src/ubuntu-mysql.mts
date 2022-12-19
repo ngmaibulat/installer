@@ -1,7 +1,7 @@
 #!/usr/bin/env zx
 
 import fs from "node:fs";
-import { isRoot, genPassword, genSql, createEnv } from "./utils.mjs";
+import { isRoot, genPassword, genSql, createEnv, genKnex } from "./utils.mjs";
 
 const msg = "The script will deploy MySQL Server and set a random root password";
 
@@ -58,6 +58,16 @@ env = createEnv(dbname, "apprw", approPw);
 fstream = fs.createWriteStream("apprw.env");
 fstream.write(env);
 
+const script = genKnex();
+fstream = fs.createWriteStream("db.js");
+fstream.write(script);
+
 echo(chalk.yellowBright(`Review files: tmp.sql, root.env, appro.env, apprw.env`));
 echo(chalk.yellowBright(`Secure them, as they contain sensitive information`));
+echo(``);
+
+echo(chalk.yellowBright(`Review db.js with knex initialization`));
+echo(chalk.yellowBright(`To use it, you need to install knex, dotenv`));
+echo(chalk.yellowBright(`Rename one of *.env files to just .env`));
+echo(chalk.yellowBright(`And set "type"="module" in package.json`));
 echo(``);
