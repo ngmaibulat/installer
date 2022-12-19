@@ -37,7 +37,7 @@ export function genSql(pass: string, dbname: string, filename: string) {
     const fstream = fs.writeFileSync(filename, sql);
 }
 
-export function createEnv(dbname: string, user: string, pass: string) {
+export function createEnv(dbname: string, user: string, pass: string): string {
     const out = `
     DB_DRIVER = "mysql2"
     DB_HOST = "127.0.0.1"
@@ -46,4 +46,5 @@ export function createEnv(dbname: string, user: string, pass: string) {
     DB_PASS = "${pass}"
     DB_NAME = "${dbname}"
 `;
+    return out;
 }
