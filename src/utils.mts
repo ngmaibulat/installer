@@ -24,27 +24,32 @@ export function genPassword(passwordLength: number) {
     return password;
 }
 
-export function genSql(pass: string, dbname: string, filename: string) {
+export function genSql(rootPw: string, approPw: string, apprwPw: string, dbname: string, filename: string) {
     const sql = `
     select host, user from mysql.user;
 
     drop database if exists test;
     create database if not exists ${dbname};
 
-    alter user root@localhost IDENTIFIED WITH caching_sha2_password BY '${pass}';
+    create user appro identified with caching_sha2_password by '${approPw}';
+    create user apprw identified with caching_sha2_password by '${apprwPw}';
+
+    alter user root@localhost IDENTIFIED WITH caching_sha2_password BY '${rootPw}';
     `;
 
     const fstream = fs.writeFileSync(filename, sql);
 }
 
 export function createEnv(dbname: string, user: string, pass: string): string {
+    //create .env
+
     const out = `
-    DB_DRIVER = "mysql2"
-    DB_HOST = "127.0.0.1"
-    DB_PORT = "3306"
-    DB_USER = "${user}"
-    DB_PASS = "${pass}"
-    DB_NAME = "${dbname}"
+DB_DRIVER = "mysql2"
+DB_HOST = "127.0.0.1"
+DB_PORT = "3306"
+DB_USER = "${user}"
+DB_PASS = "${pass}"
+DB_NAME = "${dbname}"
 `;
     return out;
 }

@@ -29,7 +29,10 @@ if (!argv._.length) {
 const dbname = argv._[0];
 
 const pass = genPassword(12);
-genSql(pass, dbname, "tmp.sql");
+const approPw = genPassword(12);
+const apprwPw = genPassword(12);
+
+genSql(pass, approPw, apprwPw, dbname, "tmp.sql");
 
 await $`apt install -qq mysql-server`;
 echo(``);
@@ -43,16 +46,18 @@ echo(``);
 await $`cat tmp.sql | mysql`;
 echo(``);
 
-const env = createEnv(dbname, "root", pass);
-echo(chalk.green(env));
-
-const fstream = fs.createWriteStream(".env");
+let env = createEnv(dbname, "root", pass);
+let fstream = fs.createWriteStream("root.env");
 fstream.write(env);
 
-echo(chalk.red(`See tmp.sql for the SQL commands run`));
-echo(chalk.red(`Secure it, as it contains the password for root@localhost mysql user`));
-echo(``);
+env = createEnv(dbname, "appro", approPw);
+fstream = fs.createWriteStream("appro.env");
+fstream.write(env);
 
-echo(chalk.red(`See .env file for the DB access setting`));
-echo(chalk.red(`Secure it, as it contains sensitive information`));
+env = createEnv(dbname, "apprw", approPw);
+fstream = fs.createWriteStream("apprw.env");
+fstream.write(env);
+
+echo(chalk.yellowBright(`Review files: tmp.sql, root.env, appro.env, apprw.env`));
+echo(chalk.yellowBright(`Secure them, as they contain sensitive information`));
 echo(``);
